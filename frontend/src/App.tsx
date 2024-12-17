@@ -1,22 +1,32 @@
-import { useState } from 'react';
-import './App.css';
+import { useEffect, useState } from 'react';
+import { Button } from '@/components/ui/button';
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardHeader,
+  CardTitle,
+} from '@/components/ui/card';
 
 function App() {
-  const [count, setCount] = useState(0);
+  const [totalSpent, setTotalSpent] = useState(0);
+
+  useEffect(() => {
+    fetch('/api/expenses/total-spent')
+      .then((res) => res.json())
+      .then((data) => setTotalSpent(data.totalSpent));
+  }, []);
 
   return (
-    <>
-      <h1>Vite + React</h1>
-      <div className='card'>
-        <button
-          className='bg-neutral-500 hover:bg-neutral-700 text-white font-bold py-2 px-4 rounded-lg'
-          onClick={() => setCount((count) => count + 1)}
-        >
-          count is {count}
-        </button>
-        <p></p>
-      </div>
-    </>
+    <Card className='w-[350px]'>
+      <CardHeader>
+        <CardTitle>Total Spent</CardTitle>
+        <CardDescription>Total amount you've spent.</CardDescription>
+      </CardHeader>
+      <CardContent>
+        <p>{totalSpent}</p>
+      </CardContent>
+    </Card>
   );
 }
 
