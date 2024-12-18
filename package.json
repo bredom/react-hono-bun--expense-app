@@ -1,20 +1,21 @@
 {
-	"name": "react-hono-bun--expense-app",
-	"module": "server/index.ts",
-	"type": "module",
-	"scripts": {
-		"start": "bun server/index.ts",
-		"dev": "bun --watch server/index.ts"
-	},
-	"devDependencies": {
-		"@types/bun": "latest"
-	},
-	"peerDependencies": {
-		"typescript": "^5.0.0"
-	},
-	"dependencies": {
-		"@hono/zod-validator": "^0.4.1",
-		"hono": "^4.6.8",
-		"zod": "^3.23.8"
-	}
+  "name": "react-hono-bun--expense-app",
+  "module": "server/index.ts",
+  "type": "module",
+  "scripts": {
+    "start": "bun server/index.ts",
+    "dev": "bun --watch server/index.ts",
+    "build": "bun install && cd frontend && bun install && bun run build"
+  },
+  "devDependencies": {
+    "@types/bun": "latest"
+  },
+  "peerDependencies": {
+    "typescript": "^5.0.0"
+  },
+  "dependencies": {
+    "@hono/zod-validator": "^0.4.1",
+    "hono": "^4.6.8",
+    "zod": "^3.23.8"
+  }
 }
